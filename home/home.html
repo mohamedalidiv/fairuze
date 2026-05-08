@@ -1,0 +1,1464 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAIRUZ — Botanical Archive</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,200..800&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    :root{
+      --bg:#f5f1e8;
+      --surface:#ece7da;
+      --surface-2:#e5e0d4;
+      --text:#1b1b1b;
+      --muted:#6d6a63;
+      --green:#00450d;
+      --green-2:#0a5b17;
+      --red:#b5151f;
+      --border:#d9d3c7;
+      --radius:28px;
+      --transition:.35s ease;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:var(--bg);
+      font-family:'Manrope',sans-serif;
+      color:var(--text);
+      overflow-x:hidden;
+    }
+
+    img{
+      width:100%;
+      display:block;
+    }
+
+    button,
+    input{
+      border:none;
+      outline:none;
+      font-family:inherit;
+    }
+
+    button{
+      cursor:pointer;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .container{
+      width:min(1320px, calc(100% - 60px));
+      margin:auto;
+    }
+
+    .headline{
+      font-family:'Newsreader',serif;
+    }
+
+    /* NAVBAR */
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:999;
+      backdrop-filter:blur(18px);
+      background:rgba(245,241,232,.85);
+      border-bottom:1px solid rgba(0,0,0,.04);
+    }
+
+    .navbar{
+      height:84px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .nav-left,
+    .nav-right{
+      display:flex;
+      align-items:center;
+      gap:26px;
+    }
+
+    .nav-link{
+      font-size:12px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--muted);
+      transition:var(--transition);
+    }
+
+    .nav-link:hover{
+      color:var(--green);
+    }
+
+    .logo{
+      font-family:'Newsreader',serif;
+      font-size:44px;
+      font-weight:700;
+      letter-spacing:.08em;
+      color:var(--green);
+    }
+
+    .icon-btn{
+      width:44px;
+      height:44px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:transparent;
+      transition:var(--transition);
+      position:relative;
+    }
+
+    .icon-btn:hover{
+      background:rgba(0,0,0,.05);
+    }
+
+    .cart-count{
+      position:absolute;
+      top:-3px;
+      right:-3px;
+      width:20px;
+      height:20px;
+      border-radius:50%;
+      background:var(--red);
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:10px;
+      font-weight:700;
+    }
+
+    .mobile-btn{
+      display:none;
+      font-size:24px;
+      background:none;
+    }
+
+    /* MOBILE MENU */
+
+    .mobile-menu{
+      position:fixed;
+      top:84px;
+      left:-100%;
+      width:100%;
+      background:#f5f1e8;
+      z-index:998;
+      transition:.4s ease;
+      padding:30px;
+      display:flex;
+      flex-direction:column;
+      gap:24px;
+      border-bottom:1px solid var(--border);
+    }
+
+    .mobile-menu.active{
+      left:0;
+    }
+
+    .mobile-menu a{
+      font-size:14px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+    }
+
+    /* HERO */
+
+    .hero{
+      padding:24px 0 80px;
+    }
+
+    .hero-box{
+      min-height:760px;
+      border-radius:0 0 42px 42px;
+      overflow:hidden;
+      position:relative;
+      display:flex;
+      align-items:center;
+      background:#000;
+    }
+
+    .hero-box::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to right,
+      rgba(245,241,232,.96) 0%,
+      rgba(245,241,232,.78) 22%,
+      rgba(0,0,0,.2) 58%,
+      rgba(0,0,0,.78) 100%);
+      z-index:2;
+    }
+
+    .hero-bg{
+      position:absolute;
+      inset:0;
+    }
+
+    .hero-bg img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:5;
+      width:520px;
+      margin-left:70px;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      height:34px;
+      padding:0 16px;
+      border-radius:999px;
+      background:var(--red);
+      color:#fff;
+      font-size:10px;
+      font-weight:700;
+      letter-spacing:.18em;
+      margin-bottom:28px;
+    }
+
+    .hero-title{
+      font-size:92px;
+      line-height:.9;
+      font-weight:400;
+      font-style:italic;
+      color:var(--green);
+      margin-bottom:26px;
+    }
+
+    .hero-text{
+      color:#69645c;
+      line-height:1.9;
+      max-width:420px;
+      margin-bottom:36px;
+    }
+
+    .hero-actions{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    .btn-primary,
+    .btn-secondary{
+      height:58px;
+      padding:0 34px;
+      border-radius:999px;
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      transition:var(--transition);
+    }
+
+    .btn-primary{
+      background:var(--green);
+      color:#fff;
+      box-shadow:0 14px 30px rgba(0,69,13,.18);
+    }
+
+    .btn-primary:hover{
+      background:var(--green-2);
+      transform:translateY(-2px);
+    }
+
+    .btn-secondary{
+      background:#ebe6da;
+      color:#787267;
+    }
+
+    /* SECTION */
+
+    .section{
+      padding:100px 0;
+    }
+
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:30px;
+      margin-bottom:50px;
+    }
+
+    .eyebrow{
+      display:block;
+      margin-bottom:16px;
+      font-size:11px;
+      letter-spacing:.24em;
+      text-transform:uppercase;
+      color:#ab8878;
+    }
+
+    .section-title{
+      font-size:74px;
+      line-height:1;
+      font-weight:400;
+    }
+
+    .view-link{
+      font-size:11px;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+      color:#817b71;
+    }
+
+    /* HARVEST */
+
+    .harvest-grid{
+      display:grid;
+      grid-template-columns:2fr 1.2fr;
+      gap:24px;
+      margin-bottom:30px;
+    }
+
+    .card{
+      position:relative;
+      overflow:hidden;
+      border-radius:32px;
+      background:#000;
+    }
+
+    .card img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:1s ease;
+    }
+
+    .card:hover img{
+      transform:scale(1.06);
+    }
+
+    .card::after{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top, rgba(0,0,0,.52), transparent 55%);
+      z-index:2;
+    }
+
+    .card-content{
+      position:absolute;
+      left:30px;
+      bottom:30px;
+      z-index:4;
+      color:#fff;
+    }
+
+    .card-title{
+      font-size:44px;
+      margin-bottom:10px;
+      line-height:1;
+    }
+
+    .card-sub{
+      font-size:10px;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+      opacity:.8;
+    }
+
+    .large-card{
+      height:720px;
+    }
+
+    .stack{
+      display:flex;
+      flex-direction:column;
+      gap:24px;
+    }
+
+    .small-card{
+      height:348px;
+    }
+
+    /* PRODUCTS */
+
+    .products{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:22px;
+      margin-top:40px;
+    }
+
+    .product{
+      transition:var(--transition);
+    }
+
+    .product:hover{
+      transform:translateY(-5px);
+    }
+
+    .product-image{
+      height:340px;
+      overflow:hidden;
+      border-radius:24px;
+      margin-bottom:18px;
+    }
+
+    .product-image img{
+      height:100%;
+      object-fit:cover;
+      transition:1s ease;
+    }
+
+    .product:hover img{
+      transform:scale(1.06);
+    }
+
+    .product-category{
+      display:block;
+      margin-bottom:10px;
+      font-size:10px;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+      color:#b18d7f;
+    }
+
+    .product-title{
+      font-size:34px;
+      line-height:1.05;
+      margin-bottom:14px;
+    }
+
+    .price-wrap{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:20px;
+    }
+
+    .price{
+      color:var(--green);
+      font-size:28px;
+      font-style:italic;
+    }
+
+    .old-price{
+      font-size:12px;
+      text-decoration:line-through;
+      color:#99948c;
+    }
+
+    .add-cart{
+      width:100%;
+      height:56px;
+      border-radius:999px;
+      background:var(--green);
+      color:#fff;
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      transition:var(--transition);
+    }
+
+    .add-cart:hover{
+      background:var(--green-2);
+    }
+
+    /* RECIPES */
+
+    .recipes-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
+    }
+
+    .recipe-card{
+      background:var(--surface);
+      border-radius:28px;
+      overflow:hidden;
+      transition:var(--transition);
+    }
+
+    .recipe-card:hover{
+      transform:translateY(-5px);
+    }
+
+    .recipe-image{
+      height:320px;
+      overflow:hidden;
+    }
+
+    .recipe-image img{
+      height:100%;
+      object-fit:cover;
+      transition:1s ease;
+    }
+
+    .recipe-card:hover img{
+      transform:scale(1.06);
+    }
+
+    .recipe-content{
+      padding:28px;
+    }
+
+    .recipe-tag{
+      display:block;
+      margin-bottom:16px;
+      font-size:10px;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+      color:#b18d7f;
+    }
+
+    .recipe-title{
+      font-size:40px;
+      line-height:1;
+      margin-bottom:16px;
+    }
+
+    .recipe-text{
+      color:#68645c;
+      line-height:1.8;
+      margin-bottom:24px;
+    }
+
+    .recipe-btn{
+      width:100%;
+      height:54px;
+      border-radius:999px;
+      background:#111;
+      color:#fff;
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+    }
+
+    /* NEWSLETTER */
+
+    .newsletter{
+      margin-top:100px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      overflow:hidden;
+    }
+
+    .newsletter-left{
+      background:var(--green);
+      color:#fff;
+      padding:80px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+
+    .newsletter-title{
+      font-size:72px;
+      line-height:.95;
+      font-style:italic;
+      margin:24px 0 40px;
+    }
+
+    .newsletter-box{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      border-bottom:1px solid rgba(255,255,255,.2);
+      padding-bottom:16px;
+    }
+
+    .newsletter-box input{
+      flex:1;
+      background:none;
+      color:#fff;
+      font-size:14px;
+    }
+
+    .newsletter-box input::placeholder{
+      color:rgba(255,255,255,.6);
+    }
+
+    .newsletter-btn{
+      background:none;
+      color:#fff;
+      font-size:11px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      font-weight:700;
+    }
+
+    .newsletter-image{
+      min-height:500px;
+    }
+
+    .newsletter-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    /* FOOTER */
+
+    footer{
+      padding:90px 0 40px;
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1.5fr 1fr 1fr 1fr;
+      gap:50px;
+      margin-bottom:70px;
+    }
+
+    .footer-logo{
+      font-size:34px;
+      color:var(--green);
+      margin-bottom:18px;
+    }
+
+    .footer-text{
+      max-width:280px;
+      color:#77756d;
+      line-height:1.9;
+      margin-bottom:26px;
+    }
+
+    .socials{
+      display:flex;
+      gap:12px;
+    }
+
+    .social{
+      width:38px;
+      height:38px;
+      border-radius:50%;
+      background:#e9e4d7;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transition:var(--transition);
+    }
+
+    .social:hover{
+      background:var(--green);
+      color:#fff;
+    }
+
+    .footer-col h4{
+      font-size:11px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      margin-bottom:24px;
+      color:#9d9688;
+    }
+
+    .footer-col a{
+      display:block;
+      margin-bottom:14px;
+      color:#4d4a45;
+    }
+
+    .copyright{
+      border-top:1px solid var(--border);
+      padding-top:30px;
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+      color:#99948c;
+      font-size:11px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+    }
+
+    /* SEARCH MODAL */
+
+    .search-modal{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.5);
+      backdrop-filter:blur(10px);
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      padding-top:120px;
+      opacity:0;
+      visibility:hidden;
+      transition:var(--transition);
+      z-index:9999;
+    }
+
+    .search-modal.active{
+      opacity:1;
+      visibility:visible;
+    }
+
+    .search-box{
+      width:min(700px,90%);
+      background:#fff;
+      border-radius:24px;
+      padding:22px;
+      display:flex;
+      align-items:center;
+      gap:16px;
+    }
+
+    .search-box input{
+      flex:1;
+      font-size:18px;
+      background:none;
+    }
+
+    .search-close{
+      width:46px;
+      height:46px;
+      border-radius:50%;
+      background:#f2f2f2;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:1100px){
+
+      .products{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .recipes-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .footer-grid{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .hero-title{
+        font-size:72px;
+      }
+
+      .section-title{
+        font-size:58px;
+      }
+
+    }
+
+    @media(max-width:900px){
+
+      .nav-left{
+        display:none;
+      }
+
+      .mobile-btn{
+        display:block;
+      }
+
+      .hero-box{
+        min-height:620px;
+      }
+
+      .hero-content{
+        margin-left:30px;
+        width:90%;
+      }
+
+      .hero-title{
+        font-size:58px;
+      }
+
+      .harvest-grid{
+        grid-template-columns:1fr;
+      }
+
+      .newsletter{
+        grid-template-columns:1fr;
+      }
+
+      .newsletter-left{
+        padding:60px 30px;
+      }
+
+      .newsletter-title{
+        font-size:54px;
+      }
+
+    }
+
+    @media(max-width:700px){
+
+      .container{
+        width:calc(100% - 24px);
+      }
+
+      .hero-title{
+        font-size:46px;
+      }
+
+      .section-title{
+        font-size:42px;
+      }
+
+      .products,
+      .recipes-grid,
+      .footer-grid{
+        grid-template-columns:1fr;
+      }
+
+      .section{
+        padding:70px 0;
+      }
+
+      .section-head{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .large-card{
+        height:520px;
+      }
+
+      .small-card{
+        height:260px;
+      }
+
+      .newsletter-title{
+        font-size:42px;
+      }
+
+      .copyright{
+        flex-direction:column;
+      }
+
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+
+    <div class="container navbar">
+
+      <div class="nav-left">
+
+        <a href="#home" class="nav-link">HOME</a>
+        <a href="#shop" class="nav-link">SHOP</a>
+        <a href="#recipes" class="nav-link">RECIPES</a>
+        <a href="#newsletter" class="nav-link">NEWSLETTER</a>
+
+      </div>
+
+      <div class="logo">
+        FAIRUZ
+      </div>
+
+      <div class="nav-right">
+
+        <button class="icon-btn" id="searchBtn">
+          🔍
+        </button>
+
+        <button class="icon-btn" id="cartBtn">
+          🛒
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+
+        <button class="mobile-btn" id="mobileBtn">
+          ☰
+        </button>
+
+      </div>
+
+    </div>
+
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home">HOME</a>
+    <a href="#shop">SHOP</a>
+    <a href="#recipes">RECIPES</a>
+    <a href="#newsletter">NEWSLETTER</a>
+  </div>
+
+  <div class="search-modal" id="searchModal">
+
+    <div class="search-box">
+
+      <input type="text" placeholder="Search products..." id="searchInput">
+
+      <button class="search-close" id="closeSearch">
+        ✕
+      </button>
+
+    </div>
+
+  </div>
+
+  <section class="hero" id="home">
+
+    <div class="hero-box">
+
+      <div class="hero-bg">
+
+        <img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?q=80&w=1600&auto=format&fit=crop">
+
+      </div>
+
+      <div class="hero-content">
+
+        <div class="badge">
+          ESTABLISHED 1965
+        </div>
+
+        <h1 class="headline hero-title">
+          The Spice & Garlic Mastery
+        </h1>
+
+        <p class="hero-text">
+          Celebrating the pungent elegance of Siwa garlic and hand-ground spices from the heart of the Nile delta.
+        </p>
+
+        <div class="hero-actions">
+
+          <button class="btn-primary">
+            Explore Spices
+          </button>
+
+          <button class="btn-secondary">
+            The Heritage
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="section">
+
+    <div class="container">
+
+      <div class="section-head">
+
+        <div>
+
+          <span class="eyebrow">
+            ARCHIVE 01
+          </span>
+
+          <h2 class="headline section-title">
+            Harvest Selections
+          </h2>
+
+        </div>
+
+        <a href="#shop" class="view-link">
+          VIEW ALL CATEGORIES →
+        </a>
+
+      </div>
+
+      <div class="harvest-grid">
+
+        <div class="card large-card">
+
+          <img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?q=80&w=1400&auto=format&fit=crop">
+
+          <div class="card-content">
+
+            <h3 class="headline card-title">
+              Rare Spices
+            </h3>
+
+            <p class="card-sub">
+              AROMATIC TREASURES OF THE EAST
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="stack">
+
+          <div class="card small-card">
+
+            <img src="https://images.unsplash.com/photo-1470549813517-2fa741d25c92?q=80&w=1200&auto=format&fit=crop">
+
+            <div class="card-content">
+
+              <h3 class="headline card-title" style="font-size:32px">
+                Artisanal Garlic
+              </h3>
+
+              <p class="card-sub">
+                PRESERVED WITH HERITAGE
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="card small-card">
+
+            <img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?q=80&w=1200&auto=format&fit=crop">
+
+            <div class="card-content">
+
+              <h3 class="headline card-title" style="font-size:32px">
+                Heritage Oils
+              </h3>
+
+              <p class="card-sub">
+                COLD-PRESSED PERFECTION
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="products" id="shop">
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="section" id="recipes">
+
+    <div class="container">
+
+      <div class="section-head">
+
+        <div>
+
+          <span class="eyebrow">
+            CULINARY JOURNAL
+          </span>
+
+          <h2 class="headline section-title">
+            Recipes Archive
+          </h2>
+
+        </div>
+
+      </div>
+
+      <div class="recipes-grid">
+
+        <div class="recipe-card">
+
+          <div class="recipe-image">
+            <img src="https://images.unsplash.com/photo-1547592180-85f173990554?q=80&w=1200&auto=format&fit=crop">
+          </div>
+
+          <div class="recipe-content">
+
+            <span class="recipe-tag">
+              MEDITERRANEAN
+            </span>
+
+            <h3 class="headline recipe-title">
+              Garlic Herb Lamb
+            </h3>
+
+            <p class="recipe-text">
+              Slow roasted lamb infused with garlic oil and aromatic herbs.
+            </p>
+
+            <button class="recipe-btn">
+              View Recipe
+            </button>
+
+          </div>
+
+        </div>
+
+        <div class="recipe-card">
+
+          <div class="recipe-image">
+            <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?q=80&w=1200&auto=format&fit=crop">
+          </div>
+
+          <div class="recipe-content">
+
+            <span class="recipe-tag">
+              BOTANICAL
+            </span>
+
+            <h3 class="headline recipe-title">
+              Smoked Harissa Bowl
+            </h3>
+
+            <p class="recipe-text">
+              A spicy botanical blend crafted with Fairuz harissa.
+            </p>
+
+            <button class="recipe-btn">
+              View Recipe
+            </button>
+
+          </div>
+
+        </div>
+
+        <div class="recipe-card">
+
+          <div class="recipe-image">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1200&auto=format&fit=crop">
+          </div>
+
+          <div class="recipe-content">
+
+            <span class="recipe-tag">
+              GOURMET
+            </span>
+
+            <h3 class="headline recipe-title">
+              Olive Citrus Roast
+            </h3>
+
+            <p class="recipe-text">
+              Bright citrus paired with botanical olive infusions.
+            </p>
+
+            <button class="recipe-btn">
+              View Recipe
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="newsletter" id="newsletter">
+
+    <div class="newsletter-left">
+
+      <span class="eyebrow" style="color:rgba(255,255,255,.7)">
+        JOIN THE ARCHIVE
+      </span>
+
+      <h2 class="headline newsletter-title">
+        Be the first to receive seasonal harvests.
+      </h2>
+
+      <div class="newsletter-box">
+
+        <input type="email" placeholder="YOUR ELECTRONIC MAIL">
+
+        <button class="newsletter-btn">
+          SUBSCRIBE
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="newsletter-image">
+
+      <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1400&auto=format&fit=crop">
+
+    </div>
+
+  </section>
+
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div>
+
+          <div class="headline footer-logo">
+            FAIRUZ
+          </div>
+
+          <p class="footer-text">
+            A tribute to the artisanal heritage of Egypt, bringing the finest botanical harvests, spices, and garlic to your table.
+          </p>
+
+          <div class="socials">
+            <div class="social">↗</div>
+            <div class="social">✦</div>
+          </div>
+
+        </div>
+
+        <div class="footer-col">
+
+          <h4>
+            Navigation
+          </h4>
+
+          <a href="#">The Collection</a>
+          <a href="#">Harvest Calendar</a>
+          <a href="#">Our Producers</a>
+          <a href="#">Store Locator</a>
+
+        </div>
+
+        <div class="footer-col">
+
+          <h4>
+            Assistance
+          </h4>
+
+          <a href="#">Shipping Archive</a>
+          <a href="#">Return Policy</a>
+          <a href="#">Privacy Terms</a>
+          <a href="#">Contact Us</a>
+
+        </div>
+
+        <div class="footer-col">
+
+          <h4>
+            Visit Us
+          </h4>
+
+          <a href="#">12 Al Botanical Street</a>
+          <a href="#">Zamalek, Cairo</a>
+          <a href="#">Egypt</a>
+
+        </div>
+
+      </div>
+
+      <div class="copyright">
+
+        <span>
+          © 1965–2024 FAIRUZ FOODS ALL RIGHTS RESERVED.
+        </span>
+
+        <span>
+          CAIRO · LONDON · DUBAI
+        </span>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+  <script>
+
+    // MOBILE MENU
+
+    const mobileBtn = document.getElementById('mobileBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+    });
+
+    // SEARCH
+
+    const searchBtn = document.getElementById('searchBtn');
+    const searchModal = document.getElementById('searchModal');
+    const closeSearch = document.getElementById('closeSearch');
+
+    searchBtn.addEventListener('click', () => {
+      searchModal.classList.add('active');
+    });
+
+    closeSearch.addEventListener('click', () => {
+      searchModal.classList.remove('active');
+    });
+
+    searchModal.addEventListener('click', e => {
+      if(e.target === searchModal){
+        searchModal.classList.remove('active');
+      }
+    });
+
+    // PRODUCTS
+
+    const productData = [
+      {
+        name:'Spiced Garlic Harissa',
+        category:'BOTANICAL',
+        price:180,
+        oldPrice:null,
+        image:'https://images.unsplash.com/photo-1470549813517-2fa741d25c92?q=80&w=1200&auto=format&fit=crop'
+      },
+      {
+        name:'Smoked Paprika & Cumin',
+        category:'TRADITION',
+        price:145,
+        oldPrice:200,
+        image:'https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?q=80&w=1200&auto=format&fit=crop'
+      },
+      {
+        name:'Siwa Garlic Olive Oil',
+        category:'INFUSED',
+        price:260,
+        oldPrice:310,
+        image:'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?q=80&w=1200&auto=format&fit=crop'
+      },
+      {
+        name:'Delta Blossom Honey',
+        category:'NECTAR',
+        price:240,
+        oldPrice:350,
+        image:'https://images.unsplash.com/photo-1587049352851-8d4e89133924?q=80&w=1200&auto=format&fit=crop'
+      }
+    ];
+
+    const productsContainer = document.getElementById('shop');
+
+    productData.forEach(product => {
+
+      productsContainer.innerHTML += `
+
+        <div class="product" data-name="${product.name}">
+
+          <div class="product-image">
+            <img src="${product.image}">
+          </div>
+
+          <span class="product-category">
+            ${product.category}
+          </span>
+
+          <h3 class="headline product-title">
+            ${product.name}
+          </h3>
+
+          <div class="price-wrap">
+
+            ${product.oldPrice ? `<span class="old-price">${product.oldPrice}</span>` : ''}
+
+            <span class="headline price">
+              EGP ${product.price}
+            </span>
+
+          </div>
+
+          <button class="add-cart">
+            Add To Archive
+          </button>
+
+        </div>
+
+      `;
+
+    });
+
+    // CART
+
+    let cart = JSON.parse(localStorage.getItem('fairuz-cart')) || [];
+
+    const cartCount = document.getElementById('cartCount');
+
+    function updateCart(){
+      cartCount.innerText = cart.length;
+      localStorage.setItem('fairuz-cart', JSON.stringify(cart));
+    }
+
+    updateCart();
+
+    document.addEventListener('click', e => {
+
+      if(e.target.classList.contains('add-cart')){
+
+        const product = e.target.closest('.product');
+
+        const name = product.dataset.name;
+
+        cart.push(name);
+
+        updateCart();
+
+        e.target.innerText = 'Added ✓';
+
+        setTimeout(() => {
+          e.target.innerText = 'Add To Archive';
+        },1500);
+
+      }
+
+    });
+
+    // SEARCH FILTER
+
+    const searchInput = document.getElementById('searchInput');
+
+    searchInput.addEventListener('input', () => {
+
+      const value = searchInput.value.toLowerCase();
+
+      document.querySelectorAll('.product').forEach(product => {
+
+        const name = product.dataset.name.toLowerCase();
+
+        if(name.includes(value)){
+          product.style.display = 'block';
+        }else{
+          product.style.display = 'none';
+        }
+
+      });
+
+    });
+
+    // CART BUTTON
+
+    document.getElementById('cartBtn').addEventListener('click', () => {
+
+      alert(`You have ${cart.length} item(s) in your archive cart.`);
+
+    });
+
+    // RECIPE BUTTONS
+
+    document.querySelectorAll('.recipe-btn').forEach(btn => {
+
+      btn.addEventListener('click', () => {
+
+        alert('Recipe page coming soon.');
+
+      });
+
+    });
+
+  </script>
+
+</body>
+</html>
+```
