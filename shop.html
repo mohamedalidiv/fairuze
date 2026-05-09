@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html dir="ltr" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fairuz - Your Selection</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#ffdad6",
+                    "tertiary-fixed-dim": "#e9c349",
+                    "on-tertiary-container": "#4f3e00",
+                    "on-primary-fixed": "#002203",
+                    "on-primary": "#ffffff",
+                    "secondary-container": "#da3433",
+                    "surface-container": "#efeee3",
+                    "on-tertiary": "#ffffff",
+                    "outline": "#717a6d",
+                    "on-surface-variant": "#41493e",
+                    "primary-container": "#1b5e20",
+                    "surface-tint": "#2a6b2c",
+                    "on-tertiary-fixed": "#241a00",
+                    "surface-dim": "#dbdbcf",
+                    "primary-fixed": "#acf4a4",
+                    "surface-variant": "#e4e3d7",
+                    "on-secondary-container": "#fffbff",
+                    "on-secondary": "#ffffff",
+                    "inverse-primary": "#91d78a",
+                    "on-primary-fixed-variant": "#0c5216",
+                    "outline-variant": "#c0c9bb",
+                    "surface-container-highest": "#e4e3d7",
+                    "on-error": "#ffffff",
+                    "on-background": "#1b1c15",
+                    "tertiary-fixed": "#ffe088",
+                    "on-tertiary-fixed-variant": "#574500",
+                    "tertiary-container": "#cca830",
+                    "surface-container-lowest": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-error-container": "#93000a",
+                    "background": "#fbfaee",
+                    "inverse-on-surface": "#f2f1e5",
+                    "secondary": "#b6171e",
+                    "primary-fixed-dim": "#91d78a",
+                    "surface-container-low": "#f5f4e8",
+                    "surface-container-high": "#e9e9dd",
+                    "on-secondary-fixed": "#410003",
+                    "tertiary": "#735c00",
+                    "on-surface": "#1b1c15",
+                    "primary": "#00450d",
+                    "on-secondary-fixed-variant": "#930010",
+                    "surface": "#fbfaee",
+                    "error": "#ba1a1a",
+                    "on-primary-container": "#90d689",
+                    "inverse-surface": "#303129",
+                    "surface-bright": "#fbfaee",
+                    "secondary-fixed-dim": "#ffb3ac"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Newsreader", "serif"],
+                    "body": ["Manrope", "sans-serif"],
+                    "label": ["Manrope", "sans-serif"]
+            }
+          },
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3, .serif-font { font-family: 'Newsreader', serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-32">
+<!-- Top Navigation Anchor (Manual suppression for task focus: Cart Page Context) -->
+<header class="fixed top-0 w-full z-50 bg-[#fbfaee]/80 dark:bg-[#1b1c15]/80 backdrop-blur-md shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center px-6 py-4 w-full rtl:flex-row-reverse">
+<div class="flex items-center gap-4">
+<button class="hover:opacity-70 transition-opacity">
+<span class="material-symbols-outlined text-[#00450d] dark:text-[#c0c9bb]">arrow_back</span>
+</button>
+<span class="font-serif text-2xl font-bold tracking-widest text-[#00450d] dark:text-[#e4e3d7] uppercase">Fairuz</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#00450d] dark:text-[#c0c9bb]">shopping_cart</span>
+</div>
+</div>
+</header>
+<main class="pt-24 px-6 max-w-2xl mx-auto">
+<!-- Header Section -->
+<div class="mb-10">
+<div class="flex justify-between items-baseline mb-2">
+<h1 class="text-4xl font-headline italic tracking-tight text-primary">سلة التسوق</h1>
+<p class="text-sm font-label uppercase tracking-widest text-on-surface-variant/60">Cart Archive</p>
+</div>
+<div class="h-[1px] w-full bg-outline-variant/20"></div>
+</div>
+<!-- Specimen Items List -->
+<div class="space-y-6">
+<!-- Item 1: Premium Saffron -->
+<div class="relative group bg-surface-container-highest rounded-xl p-5 flex gap-6 transition-all">
+<div class="w-24 h-24 rounded-lg overflow-hidden bg-surface flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Macro close-up of high-quality red saffron threads in a vintage glass apothecary jar, warm artisanal lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFPCw9c2ARKYmL_Zbfodp3lwU8YXRsGrsgXvWjEwPfE1wWuxWdjxkdhkyqPwgXkJaA-58eYBdJrBJ5RJpKtRLqQlPhefMWm4YG43nZiCmnC98cFxaXogII-xJsqon5Ou53CrMEWI4mB2LuZ-P_48DN157J7b6UyGspWo1kzpKBcvy1lW2wyKpGhkUbR2M2ef6qjmQHwi1Jy431-pXDbbCJkazBquRDc0MDbQ9wVwjJ71jeX_l5Fm8z3lKRDhR-1uAe4uvhpQhjEnIX"/>
+</div>
+<div class="flex flex-col justify-between flex-grow">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="text-xl font-headline font-semibold text-primary">Saffron Specimen N°04</h3>
+<span class="bg-secondary text-on-secondary text-[10px] font-label font-bold tracking-[0.1em] uppercase px-3 py-1 rounded-full">Limited Harvest</span>
+</div>
+<p class="text-sm text-on-surface-variant font-label tracking-tight mt-1">زعفران فاخر - 5g</p>
+</div>
+<div class="flex justify-between items-end mt-4">
+<div class="flex items-center bg-surface rounded-full border border-outline-variant/15 px-3 py-1 gap-4">
+<button class="text-primary hover:opacity-50 transition-opacity"><span class="material-symbols-outlined text-sm">remove</span></button>
+<span class="text-sm font-label font-bold text-primary">01</span>
+<button class="text-primary hover:opacity-50 transition-opacity"><span class="material-symbols-outlined text-sm">add</span></button>
+</div>
+<p class="text-lg font-headline italic font-bold text-primary">750 EGP</p>
+</div>
+</div>
+<button class="absolute -top-2 -right-2 bg-surface text-error rounded-full p-1 shadow-sm opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-base">close</span>
+</button>
+</div>
+<!-- Item 2: Aged Garlic -->
+<div class="relative group bg-surface-container-highest rounded-xl p-5 flex gap-6 transition-all">
+<div class="w-24 h-24 rounded-lg overflow-hidden bg-surface flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Stylized top-down photo of aged heirloom garlic cloves on rustic linen paper, moody botanical archive style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBESX2_zsMqlgojgbW5k_KgXJTyBTXf_gkeTVmqlRre-x7NKqxzm939-eOxwfFxt3DrQGHAZc_q1TTk0CiP1rB1P3PeYTdLzIaKjZFJvUu7GYpQhPVx1JGCHJjLNy6ZclqSU4NWsvs3urPnzy0HOUZCpUxOvlqu43pyHlQy4pXo9Vc94wk9GuuCqIHIJeusdGZX1TVnzGo5tsgDpkpQ3IRgBVw68Rps2-Pphf9AKqMsoc5hs0U8swiCet1xOvd76aMFyoD11fblI-2h"/>
+</div>
+<div class="flex flex-col justify-between flex-grow">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="text-xl font-headline font-semibold text-primary">Purple Garlic Archive</h3>
+<span class="bg-surface-variant text-primary text-[10px] font-label font-bold tracking-[0.1em] uppercase px-3 py-1 rounded-full">Artisanal</span>
+</div>
+<p class="text-sm text-on-surface-variant font-label tracking-tight mt-1">ثوم أرجواني معتق - 250g</p>
+</div>
+<div class="flex justify-between items-end mt-4">
+<div class="flex items-center bg-surface rounded-full border border-outline-variant/15 px-3 py-1 gap-4">
+<button class="text-primary hover:opacity-50 transition-opacity"><span class="material-symbols-outlined text-sm">remove</span></button>
+<span class="text-sm font-label font-bold text-primary">03</span>
+<button class="text-primary hover:opacity-50 transition-opacity"><span class="material-symbols-outlined text-sm">add</span></button>
+</div>
+<p class="text-lg font-headline italic font-bold text-primary">240 EGP</p>
+</div>
+</div>
+<button class="absolute -top-2 -right-2 bg-surface text-error rounded-full p-1 shadow-sm opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-base">close</span>
+</button>
+</div>
+</div>
+<!-- Order Summary Tonal Block -->
+<section class="mt-12 bg-surface-container-low rounded-xl p-8">
+<h4 class="font-headline text-lg italic text-on-surface-variant mb-6 border-b border-outline-variant/20 pb-2">ملخص الأرشيف / Summary</h4>
+<div class="space-y-4">
+<div class="flex justify-between items-center text-sm font-label uppercase tracking-widest text-on-surface-variant/80">
+<span>Subtotal / المجموع</span>
+<span class="font-bold">990 EGP</span>
+</div>
+<div class="flex justify-between items-center text-sm font-label uppercase tracking-widest text-on-surface-variant/80">
+<span>Courier / التوصيل</span>
+<span class="font-bold">45 EGP</span>
+</div>
+<div class="pt-4 border-t border-outline-variant/30 flex justify-between items-center">
+<span class="text-xl font-headline italic font-bold text-primary">Grand Total / الإجمالي</span>
+<span class="text-2xl font-headline italic font-bold text-primary">1,035 EGP</span>
+</div>
+</div>
+</section>
+<!-- Checkout Action -->
+<div class="mt-10">
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-on-primary py-5 rounded-xl font-label font-bold text-sm tracking-[0.2em] uppercase flex items-center justify-center gap-3 active:scale-95 transition-transform">
+                Complete Archive Acquisition
+                <span class="material-symbols-outlined">east</span>
+</button>
+<p class="text-center mt-6 text-[10px] font-label uppercase tracking-widest text-on-surface-variant/50">Secure Botanical Transaction</p>
+</div>
+</main>
+<!-- Contextual Bottom Nav suppression logic: Cart is task-focused, show only essential checkout bar or standard nav -->
+<!-- Applying BottomNavBar based on JSON as standard shell if user navigates back -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 rtl:flex-row-reverse bg-[#fbfaee]/90 dark:bg-[#1b1c15]/90 backdrop-blur-xl shadow-[0_-4px_40px_rgba(27,28,21,0.05)] rounded-t-3xl border-t border-[#c0c9bb]/15">
+<a class="flex flex-col items-center justify-center text-[#1b1c15]/50 dark:text-[#e4e3d7]/50 px-5 py-2 hover:text-[#00450d] transition-colors" href="#">
+<span class="material-symbols-outlined">potted_plant</span>
+<span class="font-sans text-[10px] font-semibold tracking-[0.1em] uppercase">Atelier</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1b1c15]/50 dark:text-[#e4e3d7]/50 px-5 py-2 hover:text-[#00450d] transition-colors" href="#">
+<span class="material-symbols-outlined">eco</span>
+<span class="font-sans text-[10px] font-semibold tracking-[0.1em] uppercase">Specimens</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#e4e3d7] dark:bg-[#1b5e20]/20 text-[#00450d] dark:text-[#e4e3d7] rounded-full px-5 py-2" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">local_mall</span>
+<span class="font-sans text-[10px] font-semibold tracking-[0.1em] uppercase">Cart</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1b1c15]/50 dark:text-[#e4e3d7]/50 px-5 py-2 hover:text-[#00450d] transition-colors" href="#">
+<span class="material-symbols-outlined">auto_stories</span>
+<span class="font-sans text-[10px] font-semibold tracking-[0.1em] uppercase">Journal</span>
+</a>
+</nav>
+</body></html>
